@@ -111,7 +111,7 @@ var Dialog = {
     speaker: 'page',
     type: 'inactive',
     lines: [
-      { id: '9.0', text: "I found it online, and it is supposedly straight out of The secret of Monkey island or so.", url: "http://scummbar.com/resources/downloads/index.php?todo=Fonts"}
+      { id: '9.0', text: "I found it online, and it is supposedly straight out of The secret of Monkey island or so.", url: "http://scummbar.com/resources/downloads/index.php?todo=Fonts", urlText: 'This is where I found it'}
     ],
     next: function (linePicked) {
       return Dialog.getNode('10');
