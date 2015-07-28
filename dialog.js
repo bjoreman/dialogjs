@@ -1,4 +1,27 @@
 var Dialog = {
+  createAndAddNode: function (textLines) {
+    var resultNode = Dialog.createNode(textLines);
+    Dialog.addNode(resultNode);
+    return resultNode;
+  },
+  createNode: function (textLines) {
+    var lineObjects = [];
+    var lineId;
+    textLines.forEach(function (textLine, index) {
+      lineId = index;
+      lineObjects.push({ id: lineId, text: textLine });
+    });
+    return {
+      id: null,
+      speaker: null,
+      type: textLines.length === 1 ? 'inactive' : 'interactive',
+      lines: lineObjects
+    };
+  },
+  addNode: function (node) {
+    node.id = Dialog.nodes.length;
+    Dialog.nodes.push(node);
+  },
   getNode: function (nodeId) {
     var foundNode = null;
     this.nodes.forEach(function (node) {
@@ -111,7 +134,7 @@ var Dialog = {
     speaker: 'page',
     type: 'inactive',
     lines: [
-      { id: '9.0', text: "I found it online, and it is supposedly straight out of The secret of Monkey island or so.", url: "http://scummbar.com/resources/downloads/index.php?todo=Fonts", urlText: 'This is where I found it'}
+      { id: '9.0', text: "I found it online, and it is supposedly straight out of The secret of Monkey island or so.", url: "http://scummbar.com/resources/downloads/index.php?todo=Fonts", urlText: 'This is where I found it.'}
     ],
     next: function (linePicked) {
       return Dialog.getNode('10');
