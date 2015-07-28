@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var displayDialog = function (dialogNode) {
     var interactive = (dialogNode.type === 'interactive');
     var lines = document.createElement(interactive ? 'ol' : 'div');
+    lines.className = dialogNode.speaker;
     if (dialogNode && dialogNode.lines) {
       dialogNode.lines.forEach(function (line) {
         var newLine = document.createElement(interactive ? 'li' : 'div');
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (line.url) {
           var link = document.createElement('a');
           link.href = line.url;
-          link.innerHTML = line.url;
+          link.innerHTML = line.urlText || line.url;
           newLine.appendChild(document.createElement('br'));
           newLine.appendChild(link);
         }
