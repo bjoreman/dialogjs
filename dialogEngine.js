@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentNode = Dialog.getNode('0');
   var container = document.getElementById('dialogContainer');
   var displayDialog = function (dialogNode) {
-    var interactive = (dialogNode.type === 'interactive');
-    var lines = document.createElement(interactive ? 'ol' : 'div');
+    var isInteractive = (dialogNode.type === 'interactive');
+    var lines = document.createElement(isInteractive ? 'ol' : 'div');
     lines.className = dialogNode.speaker;
     if (dialogNode && dialogNode.lines) {
       dialogNode.lines.forEach(function (line) {
-        var newLine = document.createElement(interactive ? 'li' : 'div');
+        var newLine = document.createElement(isInteractive ? 'li' : 'div');
         newLine.innerHTML = line.text;
         newLine.addEventListener('click', function () {
           displayDialog(dialogNode.next(line.id));
